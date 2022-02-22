@@ -28,20 +28,20 @@ In this repository, a glimpse of Exploratory Data Analysis will be shown on Ames
 
     There are no duplicated records
 
-### Mistakes and Extreme values
+### Mistakes
 1.  House's ID that Have unusual Sold Year is ...
 
     ID 524. That have been Built and Sold in year 2007, yet undergoing RemodAdd in year 2008
+
+### Extreme Values
+
+ In this section data section of data_house$SalePrice, based on min and max values observed, filter is used to dedicate the limit.
+The limit would be set on house with value over $500,000 = unusual price housing.
     
 2.  How many house, sold with unusual price?
 
-  #### count(price_upnormal)
-    
-    hasilnya adalah 9 house sold
+    There are 9 house sold with unusual prices based on filtered price
 
 3.  in which neighborhood do the unusual house sold?
 
-  #### price_upnormal %>%
-      count(Neighborhood)
-    
-    hasilnya adalah NoRidge: 3 house, NridgHt: 3 house, dan StoneBr: 3 house
+    The unusual house sold located in 3 neigborhoods which are: NoRidge (3 houses), NridgHt (3 house), and StoneBr (3 house)
