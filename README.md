@@ -19,7 +19,7 @@ In this repository, a glimpse of Exploratory Data Analysis will be shown on Ames
 
     ![image](https://user-images.githubusercontent.com/95951930/155143776-10ba267a-59b1-42f3-85b2-5cd462a1006b.png)
 
-    4 missing values: PoolQC, MiscFeature, Alley, Fence
+    There are 4 missing values in column: PoolQC, MiscFeature, Alley, Fence
 
 3.  "Garage" related column have the same Null pct, can you guess what Null values in Garage column mean ?
 
