@@ -37,6 +37,8 @@ In this repository, a glimpse of Exploratory Data Analysis will be shown on Ames
 
 In this section data section of data_house$SalePrice, based on min and max values observed, filter is used to dedicate the limit.
 The limit would be set on house with value over $500,000 = unusual price housing.
+
+![image](https://user-images.githubusercontent.com/95951930/155142410-86facfbe-cd54-4e1b-a7fc-1f877a22ac5a.png)
     
 2.  How many house, sold with unusual price?
 
