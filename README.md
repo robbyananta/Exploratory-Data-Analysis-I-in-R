@@ -32,7 +32,7 @@ In this repository, a glimpse of Exploratory Data Analysis will be shown on Ames
 
 ### Mistakes
 
-Here data data YearBuilt, YearRemodAdd and YrSold is filtered to find the odd difference
+Here data YearBuilt, YearRemodAdd and YrSold is filtered to find the odd difference
 
 ![image](https://user-images.githubusercontent.com/95951930/155143368-5119cce9-1646-4904-bd5a-c258777826cc.png)
 
