@@ -1,0 +1,143 @@
+---
+title: "Data Science Batch 9 - Day 14 - Exploratory Data Analysis"
+output: html_notebook
+type: Assignment
+name: Robby Ananta
+---
+
+## Load Library & Datasets
+
+```{r}
+library(tidyverse)
+
+# run the following code (note that your datapath may different with this one)
+data_house <- read.csv("C:/Users/robby/Desktop/R/house_ames.csv")
+head(data_house)
+```
+
+HINT : you can check your data using panel on the right down search your data and click on it and select `import dataset` copy the data path
+
+## 1. Data Types
+
+```{r}
+# change SalePrice datatype into double [score : 3]
+
+SalePrice_double <- as.double(data_house$SalePrice)
+head(SalePrice_double/ 1000)
+is.double(SalePrice_double)
+```
+
+## 2. Finding Missing Values
+
+```{r}
+# count number of row
+nr <- nrow(data_house)
+
+# get number of missing values for each column
+nmiss <- sapply(data_house, function(x) sum(is.na(x)))
+
+# count missing percentage = number of missing values / total rows
+missing_pct <-  nmiss / nr
+
+# create dataframe
+missing_data_pct <- as.data.frame(missing_pct)
+colnames(missing_data_pct) <- c("missing_pct")
+
+# filter out zero missing column
+ress <- missing_data_pct %>% 
+  filter(missing_pct > 0) %>% 
+  arrange(desc(missing_pct))
+
+# let's see the data
+View(ress)
+```
+
+Run the chunk above, and answer the following questions:
+
+1.  How many columns that have missing values ? [score: 2]
+
+    19 kolom entries dari 81
+
+2.  How many columns that have missing values more than 60% ? [score: 2]
+
+    4 missing values: PoolQC, MiscFeature, Alley, Fence
+
+3.  "Garage" related column have the same Null pct, can you guess what Null values in Garage column mean ? [score : 1]
+
+    Tidak mempunyai Garage
+
+## 3. Duplicates & Unique Values
+
+```{r}
+# distinct all column except Id
+data_house %>% 
+  distinct_at(vars(!Id))
+```
+
+1.  How many records that are duplicates ? [score: 2]
+
+    Tidak ada duplicate records
+
+## 4. Mistakes
+
+```{r}
+# Usually House is Built first, and then remodel, and then sold.
+# find unusual house Id HINT : calculate difference of YearBuilt, YearRemodAdd,  and YrSold [score : 4]
+
+data_house %>%
+  count(YearBuilt, YearRemodAdd, YrSold, Id) %>%
+  filter(YrSold < YearRemodAdd) %>%
+  select(YearBuilt, YearRemodAdd, YrSold, Id)
+```
+
+1.  House's ID that Have unusual Sold Year is ... [score : 1]
+
+    ID 524, yang di Built dan Sold pada tahun 2007, tetapi terjadi RemodAdd pada tahun 2008
+
+## 5. Extreme Values
+
+```{r}
+# run the code below
+ggplot(data_house) +
+  geom_histogram(mapping = aes(x = SalePrice), bins=40, 
+                 fill = "darkgreen", color = "white", linetype = "longdash")
+```
+
+After seeing the histogram, select values to be the filter values
+
+```{r}
+summary(data_house$SalePrice)
+
+# combine verbs
+filter_price <- data_house %>%
+  filter(SalePrice > 500000 | SalePrice < 30000)%>%
+  select(Id, LotArea, GarageArea, OverallQual, OverallCond, Neighborhood, SalePrice)
+
+filter_price
+
+# separate verbs
+price_normal <- data_house %>%
+  filter(SalePrice < 500000) %>%
+  select(Id, LotArea, GarageArea, OverallQual, OverallCond, Neighborhood, SalePrice)
+
+price_upnormal <- data_house %>%
+  filter(SalePrice > 500000) %>%
+  select(Id, LotArea, GarageArea, OverallQual, OverallCond, Neighborhood, SalePrice)
+
+price_normal
+price_upnormal
+```
+
+1.  How many house, sold with unusual price? [score : 2]
+
+  # count(price_upnormal)
+    
+    hasilnya adalah 9 house sold
+
+2.  in which neighborhood do the unusual house sold? [score : 3]
+
+  # price_upnormal %>%
+      count(Neighborhood)
+    
+    hasilnya adalah NoRidge: 3 house, NridgHt: 3 house, dan StoneBr: 3 house
+    
