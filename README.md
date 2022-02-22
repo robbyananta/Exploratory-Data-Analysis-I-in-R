@@ -5,8 +5,8 @@ Exploratory Data Analysis part I in R by Robby Ananta
 In this repository, a glimpse of Exploratory Data Analysis will be shown on Ames housing dataset using set of questions provided
 
 ## Steps
-- MIssing value check and handling
-- Duplicated value check and handling
+- MIssing value check
+- Duplicated value check
 - Filtering dataset for unusual mistakes or extreme values
 
 ## Set of Questions and Findings
