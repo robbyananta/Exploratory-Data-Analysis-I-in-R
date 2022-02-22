@@ -29,6 +29,11 @@ In this repository, a glimpse of Exploratory Data Analysis will be shown on Ames
     There are no duplicated records
 
 ### Mistakes
+
+Here data data YearBuilt, YearRemodAdd and YrSold is filtered to find the odd difference
+
+![image](https://user-images.githubusercontent.com/95951930/155143368-5119cce9-1646-4904-bd5a-c258777826cc.png)
+
 1.  House's ID that Have unusual Sold Year is ...
 
     ID 524. That have been Built and Sold in year 2007, yet undergoing RemodAdd in year 2008
