@@ -17,6 +17,8 @@ In this repository, a glimpse of Exploratory Data Analysis will be shown on Ames
     
 2.  How many columns that have missing values more than 60% ?
 
+    ![image](https://user-images.githubusercontent.com/95951930/155143776-10ba267a-59b1-42f3-85b2-5cd462a1006b.png)
+
     4 missing values: PoolQC, MiscFeature, Alley, Fence
 
 3.  "Garage" related column have the same Null pct, can you guess what Null values in Garage column mean ?
